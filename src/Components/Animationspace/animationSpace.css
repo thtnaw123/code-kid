@@ -1,0 +1,23 @@
+.animationSpace {
+  width: 700px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.result-animation,
+.example-animation {
+  background-color: var(--animationSpace-background);
+  height: 40vh;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px,
+    rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+  border-radius: 30px;
+}
+
+.example-animation {
+  margin-top: 20px;
+}
+.result-animation {
+  margin-top: 10px;
+}

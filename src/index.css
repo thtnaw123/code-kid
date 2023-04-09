@@ -1,0 +1,13 @@
+:root {
+  --font-fam: "Courier New", Courier, monospace;
+  --code-space-background: yellow;
+  --code-space-color: #000;
+  --buttons-container-background: red;
+  --run-reset-button-color: #ff3838;
+  --actions-container-background: #3ae374;
+  --actions-button-background: #ff3838;
+  --animationSpace-background: #bdc3c7;
+
+  --Buttons-Codespace-background: yellow;
+  --game-page-container-background: #5bcd51;
+}

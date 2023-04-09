@@ -1,0 +1,28 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.game-page-container {
+  background-color: var(--game-page-container-background);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.Buttons-Codespace--Actions {
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.Buttons-Codespace {
+  background-color: var(--Buttons-Codespace-background);
+  margin: 10px;
+  border-radius: 10px;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
