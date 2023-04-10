@@ -1,5 +1,5 @@
 .animationSpace {
-  width: 700px;
+  width: 35%;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -20,4 +20,17 @@
 }
 .result-animation {
   margin-top: 10px;
+}
+
+@media only screen and (max-width: 700px) {
+  .animationSpace {
+    width: 90vw;
+    margin-left: 30px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .animationSpace {
+    margin-left: 20px;
+  }
 }

@@ -3,21 +3,34 @@
   border-radius: 10px;
   margin: 20px 10px;
   display: flex;
+  justify-content: center;
   padding: 20px 10px;
-  flex-direction: row;
 }
 
 .actionsSpace button {
   margin: 20px 15px;
+  padding: 1rem 3rem;
   outline: none;
   background-color: var(--actions-button-background);
   border: none;
-  width: 300px;
-  height: 80px;
   border-radius: 10px;
   font-size: 20px;
   font-family: var(--font-fam);
   cursor: pointer;
   box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px,
     rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+}
+
+@media only screen and (max-width: 700px) {
+  .actionsSpace {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .actionsSpace button {
+    margin: 10px 0;
+    padding: 0.5rem 1rem;
+  }
+}
+
+@media only screen and (max-width: 375px) {
 }
