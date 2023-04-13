@@ -1,11 +1,17 @@
 import React from "react";
 import "./buttons.css";
 
-const Buttons = () => {
+const Buttons = ({ inputObj, parseCode, run, setRun }) => {
   return (
     <div className="Buttons">
       <div className="Run_code">
-        <button>Run</button>
+        <button
+          onClick={() => {
+            parseCode(inputObj);
+          }}
+        >
+          Run
+        </button>
       </div>
 
       <div className="Reset_Code">

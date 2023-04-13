@@ -7,7 +7,7 @@ const Codespace = ({ inputObj }) => {
       {inputObj.map((item) => (
         <h3>
           {item.color.functionName}
-          {item.color.functionName ? "(" : ""} {item.color.color}{" "}
+          {item.color.functionName ? "(" : ""} {item.color.value}{" "}
           {item.color.functionName ? ")" : ""}
         </h3>
       ))}

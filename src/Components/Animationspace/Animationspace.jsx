@@ -1,24 +1,32 @@
 import React, { useEffect, useRef } from "react";
 import "./animationSpace.css";
+import { Ball } from "../../Utils/Ball";
 
-const Animationspace = () => {
+const Animationspace = ({ parseCode, inputObj, run }) => {
   const runCanvaRef = useRef(null);
   const exampleCanvaRef = useRef(null);
 
+  //Exection canvas
   useEffect(() => {
     const render = () => {
       const canvas = runCanvaRef.current;
       const ctx = canvas.getContext("2d");
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      if (run) {
+        Ball(ctx, inputObj[0].color.value);
+      }
       requestAnimationFrame(render);
     };
     render();
   }, []);
+
+  //Example canvas
   useEffect(() => {
     const render = () => {
       const canvas = exampleCanvaRef.current;
       const ctx = canvas.getContext("2d");
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      Ball(ctx, "blue");
       requestAnimationFrame(render);
     };
     render();

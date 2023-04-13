@@ -4,8 +4,8 @@ export const Engine = (data) => {
     if (!item) {
       return;
     } else {
-      if (item.funname && item.value) {
-        arr.push({ color: item.value });
+      if (item.color.functionName && item.color.value) {
+        arr.push({ color: item.color.value });
       } else {
         console.log("error");
       }
