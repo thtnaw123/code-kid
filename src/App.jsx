@@ -7,12 +7,13 @@ function App() {
     { color: { id: 1, color: "", functionName: "" } },
   ]);
   const [outputObj, setOutputObj] = useState([]);
-
+  //Action color() funtion
   const Color = (text) => {
     const newArray = [...inputObj];
     newArray[0].color.functionName = text;
     setInputObj(newArray);
   };
+  //Action color type
   const colorType = (text) => {
     //check if there is a funtion name
     if (inputObj[0].color.functionName) {
@@ -28,7 +29,7 @@ function App() {
       <div className="game-page-container">
         <div className="Buttons-Codespace--Actions">
           <div className="Buttons-Codespace">
-            <Codespace />
+            <Codespace inputObj={inputObj} />
             <Buttons />
           </div>
           <Actions Color={Color} colorType={colorType} />
