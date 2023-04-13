@@ -12,14 +12,17 @@
   height: 40vh;
   box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px,
     rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
-  border-radius: 30px;
 }
 
 .example-animation {
-  margin-top: 20px;
+  margin: 20px;
+  width: 600px;
+  height: 400px;
 }
 .result-animation {
-  margin-top: 10px;
+  margin: 20px;
+  width: 600px;
+  height: 400px;
 }
 
 @media only screen and (max-width: 700px) {
@@ -33,4 +36,12 @@
   .animationSpace {
     margin-left: 20px;
   }
+}
+
+.run {
+  border: solid 1px #2f3640;
+}
+
+.example {
+  border: solid 1px #2f3640;
 }
