@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import "./animationSpace.css";
 import { Ball } from "../../Utils/Ball";
 
-const Animationspace = ({ parseCode, inputObj, run }) => {
+const Animationspace = ({ parseCode, inputObj }) => {
   const runCanvaRef = useRef(null);
   const exampleCanvaRef = useRef(null);
 
@@ -12,9 +12,7 @@ const Animationspace = ({ parseCode, inputObj, run }) => {
       const canvas = runCanvaRef.current;
       const ctx = canvas.getContext("2d");
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      if (run) {
-        Ball(ctx, inputObj[0].color.value);
-      }
+      Ball(ctx, inputObj[0].color.value);
       requestAnimationFrame(render);
     };
     render();

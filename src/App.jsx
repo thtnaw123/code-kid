@@ -8,7 +8,6 @@ function App() {
     { color: { id: 1, value: "", functionName: "" } },
   ]);
   const [outPutObj, setOutPutObj] = useState([]);
-  const [run, setRun] = useState(false);
 
   //Action color() funtion
   const Color = (text) => {
@@ -37,7 +36,11 @@ function App() {
     setOutPutObj(newArray);
   };
 
-  //
+  //Reste the code
+  const resteCode = () => {
+    const newArray = [{ color: { id: 1, value: "", functionName: "" } }];
+    setInputObj(newArray);
+  };
   return (
     <>
       <div className="game-page-container">
@@ -47,13 +50,12 @@ function App() {
             <Buttons
               inputObj={inputObj}
               parseCode={parseCode}
-              run={run}
-              setRun={setRun}
+              resteCode={resteCode}
             />
           </div>
           <Actions Color={Color} colorType={colorType} />
         </div>
-        <Animationspace parseCode={parseCode} inputObj={inputObj} run={run} />
+        <Animationspace parseCode={parseCode} inputObj={inputObj} />
       </div>
     </>
   );

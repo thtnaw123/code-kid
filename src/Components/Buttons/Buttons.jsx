@@ -1,7 +1,7 @@
 import React from "react";
 import "./buttons.css";
 
-const Buttons = ({ inputObj, parseCode, run, setRun }) => {
+const Buttons = ({ inputObj, parseCode, resteCode }) => {
   return (
     <div className="Buttons">
       <div className="Run_code">
@@ -15,7 +15,13 @@ const Buttons = ({ inputObj, parseCode, run, setRun }) => {
       </div>
 
       <div className="Reset_Code">
-        <button>Reset</button>
+        <button
+          onClick={() => {
+            resteCode();
+          }}
+        >
+          Reset
+        </button>
       </div>
     </div>
   );
