@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./animationSpace.css";
 import { BallMovement } from "../../Utils/Ball";
 import img2 from "../../assets/img2.png";
@@ -15,8 +15,7 @@ const Animationspace = ({ outPutObj }) => {
   ];
 
   //variables
-  let dropBoxs = [];
-  let dropBox = false;
+  let dropBox = [];
   let mode = ["straight", "up", "back", "down"];
   let objVar = { x: 100, y: 100, dx: 50, dy: 50 };
   let color = "blue";
@@ -24,6 +23,7 @@ const Animationspace = ({ outPutObj }) => {
   let m = 0;
   let i = 0;
   let checker = true;
+
   while (i < outPutObj.length) {
     if (outPutObj[i].name == "move") {
       console.log(`mode: ${mode[m]}`);
@@ -54,7 +54,7 @@ const Animationspace = ({ outPutObj }) => {
         m++;
       }
     } else if (outPutObj[i].name === "dropBox") {
-      dropBox = true;
+      dropBox.push({ x: objVar.x, y: objVar.y });
     }
     if (i > Answer.length - 1) {
       checker = false;
@@ -94,13 +94,9 @@ const Animationspace = ({ outPutObj }) => {
         BallMovement(ctx, objVar.x, objVar.y, "blue", 20);
       }
       //drop box
-      dropBoxs.map((item) => {
+      dropBox.forEach((item) => {
         DropBox(ctx, item.x, item.y);
       });
-      if (dropBox == true) {
-        dropBoxs.push({ x: objVar, y: objVar.y });
-        dropBox = false;
-      }
       requestAnimationFrame(render);
     };
     render();
