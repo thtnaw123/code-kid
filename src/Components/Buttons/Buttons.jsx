@@ -1,15 +1,37 @@
 import React from "react";
 import "./buttons.css";
 
-const Buttons = () => {
+const Buttons = ({ inputObj, parseCode, resetCode, undoCode }) => {
   return (
     <div className="Buttons">
       <div className="Run_code">
-        <button>Run</button>
+        <button
+          onClick={() => {
+            parseCode(inputObj);
+          }}
+        >
+          Run
+        </button>
       </div>
 
       <div className="Reset_Code">
-        <button>Reset</button>
+        <button
+          onClick={() => {
+            resetCode();
+          }}
+        >
+          Reset
+        </button>
+      </div>
+
+      <div className="Undo_Code">
+        <button
+          onClick={() => {
+            undoCode();
+          }}
+        >
+          undo
+        </button>
       </div>
     </div>
   );
