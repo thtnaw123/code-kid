@@ -10,6 +10,8 @@ export const Engine = (data) => {
         arr.push({ name: "move", value: "move" });
       } else if (item.functionName === "turn") {
         arr.push({ name: "turn", value: "turn" });
+      } else if (item.functionName === "dropBox") {
+        arr.push({ name: "dropBox", value: "dropbox" });
       } else {
         console.log("error");
       }

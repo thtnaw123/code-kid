@@ -10,6 +10,8 @@ const Animationspace = ({ outPutObj }) => {
   const exampleCanvaRef = useRef(null);
 
   //variables
+  let dropBoxs = [];
+  let dropBox = false;
   let mode = ["straight", "up", "back", "down"];
   let objVar = { x: 100, y: 100, dx: 50, dy: 50 };
   let color = "blue";
@@ -45,6 +47,8 @@ const Animationspace = ({ outPutObj }) => {
       } else {
         m++;
       }
+    } else if (outPutObj[i].name === "dropBox") {
+      dropBox = true;
     }
     WallCollision(objVar, mode[m]);
     i++;
@@ -65,6 +69,15 @@ const Animationspace = ({ outPutObj }) => {
         //DropBox(ctx, objVar.x, objVar.y, "blue");
       } else {
         BallMovement(ctx, objVar.x, objVar.y, "blue", 20);
+      }
+      //drop box
+      dropBoxs.map((item) => {
+        DropBox(ctx, item.x, item.y);
+      });
+
+      if (dropBox == true) {
+        dropBoxs.push({ x: objVar, y: objVar.y });
+        dropBox = false;
       }
       requestAnimationFrame(render);
     };

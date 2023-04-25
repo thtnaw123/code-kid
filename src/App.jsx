@@ -108,13 +108,34 @@ function App() {
     if (inputObj.length == 0) {
       const newArray = [
         ...inputObj,
-        { id, hasValue: true, functionName: "turn" },
+        { id, hasValue: true, functionName: "turnleft" },
       ];
       setInputObj(newArray);
     } else if (inputObj[index].hasValue == true) {
       const newArray = [
         ...inputObj,
         { id, hasValue: true, functionName: "turn" },
+      ];
+      setInputObj(newArray);
+    } else {
+      return;
+    }
+  };
+
+  //dropbox
+  const dropBox = () => {
+    const id = inputObj.length;
+    const index = inputObj.length - 1;
+    if (inputObj.length == 0) {
+      const newArray = [
+        ...inputObj,
+        { id, hasValue: true, functionName: "dropBox" },
+      ];
+      setInputObj(newArray);
+    } else if (inputObj[index].hasValue == true) {
+      const newArray = [
+        ...inputObj,
+        { id, hasValue: true, functionName: "dropBox" },
       ];
       setInputObj(newArray);
     } else {
@@ -140,6 +161,7 @@ function App() {
             colorType={colorType}
             moveBall={moveBall}
             turn={turn}
+            dropBox={dropBox}
           />
         </div>
         <Animationspace outPutObj={outPutObj} />

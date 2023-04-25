@@ -1,6 +1,6 @@
 import React from "react";
 import "./actions.css";
-const Actions = ({ Color, colorType, moveBall, turn }) => {
+const Actions = ({ Color, colorType, moveBall, turn, dropBox }) => {
   return (
     <>
       <div className="actionsSpace">
@@ -39,13 +39,13 @@ const Actions = ({ Color, colorType, moveBall, turn }) => {
         >
           turn left
         </button>
-        {/* <button
+        <button
           onClick={() => {
-            turn();
+            dropBox();
           }}
         >
-          DropBox
-        </button> */}
+          dropBox
+        </button>
       </div>
     </>
   );
