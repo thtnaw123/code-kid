@@ -1,22 +1,84 @@
 import React, { useEffect, useRef } from "react";
 import "./animationSpace.css";
-import { Ball } from "../../Utils/Ball";
+import { BallMovement } from "../../Utils/Ball";
+import img2 from "../../assets/img2.png";
+import { DropBox } from "../../Utils/Box";
+import WallCollision from "../../Utils/WallCollision";
 
-const Animationspace = ({ parseCode, inputObj }) => {
+const Animationspace = ({ outPutObj }) => {
   const runCanvaRef = useRef(null);
   const exampleCanvaRef = useRef(null);
 
+  //variables
+  let mode = ["straight", "left", "back", "right"];
+  let objVar = { x: 100, y: 100, dx: 50, dy: 50 };
+
+  let color = "blue";
+
+  let m = 0;
+  let i = 0;
+  while (i < outPutObj.length) {
+    if (outPutObj[i].name == "move") {
+      console.log(`mode: ${mode[m]}`);
+      console.log(`x: ${objVar.x}`);
+      console.log(`y: ${objVar.y}`);
+      switch (mode[m]) {
+        case "straight":
+          objVar.x += objVar.dx;
+          break;
+        case "left":
+          objVar.y -= objVar.dy;
+          break;
+        case "right":
+          objVar.y += objVar.dy;
+          break;
+        case "back":
+          objVar.x -= objVar.dx;
+          break;
+        default:
+          break;
+      }
+    } else if (outPutObj[i].name === "color") {
+      color = outPutObj[i].value;
+    } else if (outPutObj[i].name === "turn") {
+      if (m === 3) {
+        m = 0;
+      } else {
+        m++;
+      }
+    }
+    // if (objVar.y + 50 > 400 || objVar.y - 50 <= 0) {
+    //   console.log("y collision");
+    //   objVar.dy = 0;
+    // }
+    // if (objVar.x + 50 > 600 || objVar.x - 50 <= 0) {
+    //   objVar.dx = 0;
+    //   console.log("x collision");
+    // }
+    WallCollision(objVar);
+    i++;
+  }
   //Exection canvas
   useEffect(() => {
     const render = () => {
       const canvas = runCanvaRef.current;
       const ctx = canvas.getContext("2d");
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      Ball(ctx, inputObj[0].color.value);
+      const image = new Image();
+      image.src = img2;
+      ctx.drawImage(image, 0, 0, 600, 400);
+      //Map throught output state
+      const index = outPutObj.length - 1;
+      if (index >= 0) {
+        BallMovement(ctx, objVar.x, objVar.y, color, 20);
+        DropBox(ctx, objVar.x, objVar.y, "blue");
+      } else {
+        BallMovement(ctx, objVar.x, objVar.y, "blue", 20);
+      }
       requestAnimationFrame(render);
     };
     render();
-  }, []);
+  }, [outPutObj]);
 
   //Example canvas
   useEffect(() => {
@@ -24,7 +86,10 @@ const Animationspace = ({ parseCode, inputObj }) => {
       const canvas = exampleCanvaRef.current;
       const ctx = canvas.getContext("2d");
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      Ball(ctx, "blue");
+      const image = new Image();
+      image.src = img2;
+      ctx.drawImage(image, 0, 0, 600, 400);
+      BallMovement(ctx, 100, 100, "blue", 20);
       requestAnimationFrame(render);
     };
     render();
@@ -38,7 +103,7 @@ const Animationspace = ({ parseCode, inputObj }) => {
             ref={runCanvaRef}
             width="600px"
             height="400px"
-          />
+          ></canvas>
         </div>
         <div className="example-animation">
           <canvas
@@ -46,7 +111,7 @@ const Animationspace = ({ parseCode, inputObj }) => {
             ref={exampleCanvaRef}
             width="600px"
             height="400px"
-          />
+          ></canvas>
         </div>
       </div>
     </>

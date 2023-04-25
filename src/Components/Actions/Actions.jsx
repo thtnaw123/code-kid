@@ -1,12 +1,12 @@
 import React from "react";
 import "./actions.css";
-const Actions = ({ Color, colorType }) => {
+const Actions = ({ Color, colorType, moveBall, turn }) => {
   return (
     <>
       <div className="actionsSpace">
         <button
           onClick={() => {
-            Color("Color");
+            Color("color");
           }}
         >
           Color()
@@ -25,6 +25,27 @@ const Actions = ({ Color, colorType }) => {
         >
           red
         </button>
+        <button
+          onClick={() => {
+            moveBall();
+          }}
+        >
+          Move
+        </button>
+        <button
+          onClick={() => {
+            turn();
+          }}
+        >
+          turn left
+        </button>
+        {/* <button
+          onClick={() => {
+            turn();
+          }}
+        >
+          DropBox
+        </button> */}
       </div>
     </>
   );
