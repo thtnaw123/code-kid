@@ -8,6 +8,11 @@ import WallCollision from "../../Utils/WallCollision";
 const Animationspace = ({ outPutObj }) => {
   const runCanvaRef = useRef(null);
   const exampleCanvaRef = useRef(null);
+  const Answer = [
+    { name: "move", value: "move" },
+    { name: "move", value: "move" },
+    { name: "move", value: "move" },
+  ];
 
   //variables
   let dropBoxs = [];
@@ -18,6 +23,7 @@ const Animationspace = ({ outPutObj }) => {
 
   let m = 0;
   let i = 0;
+  let checker = true;
   while (i < outPutObj.length) {
     if (outPutObj[i].name == "move") {
       console.log(`mode: ${mode[m]}`);
@@ -50,9 +56,26 @@ const Animationspace = ({ outPutObj }) => {
     } else if (outPutObj[i].name === "dropBox") {
       dropBox = true;
     }
+    if (i > Answer.length - 1) {
+      checker = false;
+    }
+    if (Answer[i]) {
+      if (
+        outPutObj[i].name !== Answer[i].name ||
+        outPutObj[i].name !== Answer[i].value
+      ) {
+        checker = false;
+      }
+    }
     WallCollision(objVar, mode[m]);
     i++;
   }
+  if (checker == true && i == Answer.length) {
+    console.log("correct");
+  } else {
+    console.log("fail");
+  }
+
   //Exection canvas
   useEffect(() => {
     const render = () => {
@@ -74,7 +97,6 @@ const Animationspace = ({ outPutObj }) => {
       dropBoxs.map((item) => {
         DropBox(ctx, item.x, item.y);
       });
-
       if (dropBox == true) {
         dropBoxs.push({ x: objVar, y: objVar.y });
         dropBox = false;

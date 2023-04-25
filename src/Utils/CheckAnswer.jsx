@@ -1,9 +1,3 @@
-const Answer = [
-  { name: "move", value: "move" },
-  { name: "move", value: "move" },
-  { name: "move", value: "move" },
-];
-
 export const checkAnswer = (outPutObj, Answer) => {
   let i = 0,
     count = 0;
