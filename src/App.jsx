@@ -105,7 +105,7 @@ function App() {
   const turn = () => {
     const id = inputObj.length;
     const index = inputObj.length - 1;
-    if (inputObj.length == 0) {
+    if (inputObj.length === 0) {
       const newArray = [
         ...inputObj,
         { id, hasValue: true, functionName: "turn" },
