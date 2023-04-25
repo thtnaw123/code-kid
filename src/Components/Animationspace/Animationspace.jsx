@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import "./animationSpace.css";
 import { BallMovement } from "../../Utils/Ball";
 import img2 from "../../assets/img2.png";
@@ -8,22 +8,14 @@ import WallCollision from "../../Utils/WallCollision";
 const Animationspace = ({ outPutObj }) => {
   const runCanvaRef = useRef(null);
   const exampleCanvaRef = useRef(null);
-  const Answer = [
-    { name: "move", value: "move" },
-    { name: "move", value: "move" },
-    { name: "move", value: "move" },
-  ];
 
   //variables
-  let dropBox = [];
   let mode = ["straight", "up", "back", "down"];
   let objVar = { x: 100, y: 100, dx: 50, dy: 50 };
   let color = "blue";
 
   let m = 0;
   let i = 0;
-  let checker = true;
-
   while (i < outPutObj.length) {
     if (outPutObj[i].name == "move") {
       console.log(`mode: ${mode[m]}`);
@@ -53,29 +45,10 @@ const Animationspace = ({ outPutObj }) => {
       } else {
         m++;
       }
-    } else if (outPutObj[i].name === "dropBox") {
-      dropBox.push({ x: objVar.x, y: objVar.y });
-    }
-    if (i > Answer.length - 1) {
-      checker = false;
-    }
-    if (Answer[i]) {
-      if (
-        outPutObj[i].name !== Answer[i].name ||
-        outPutObj[i].name !== Answer[i].value
-      ) {
-        checker = false;
-      }
     }
     WallCollision(objVar, mode[m]);
     i++;
   }
-  if (checker == true && i == Answer.length) {
-    console.log("correct");
-  } else {
-    console.log("fail");
-  }
-
   //Exection canvas
   useEffect(() => {
     const render = () => {
@@ -93,10 +66,6 @@ const Animationspace = ({ outPutObj }) => {
       } else {
         BallMovement(ctx, objVar.x, objVar.y, "blue", 20);
       }
-      //drop box
-      dropBox.forEach((item) => {
-        DropBox(ctx, item.x, item.y);
-      });
       requestAnimationFrame(render);
     };
     render();

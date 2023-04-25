@@ -15,16 +15,16 @@ class Ball {
     image.src = imgGreen;
     ctx.drawImage(image, this.x, this.y, 100, 100);
 
-    // if (this.color == "blue") {
-    //   image.src = imgGreen;
-    //   ctx.drawImage(image, this.x, this.y, 100, 100);
-    // } else if (this.color == "red") {
-    //   image.src = imgRed;
-    //   ctx.drawImage(image, this.x, this.y, 100, 100);
-    // } else {
-    //   image.src = imgGreen;
-    //   ctx.drawImage(image, this.x, this.y, 100, 100);
-    // }
+    if (this.color == "blue") {
+      image.src = imgGreen;
+      ctx.drawImage(image, this.x, this.y, 100, 100);
+    } else if (this.color == "red") {
+      image.src = imgRed;
+      ctx.drawImage(image, this.x, this.y, 100, 100);
+    } else {
+      image.src = imgGreen;
+      ctx.drawImage(image, this.x, this.y, 100, 100);
+    }
     ctx.strokeStyle = "black";
     ctx.strokeWidth = 4;
     ctx.fill();
