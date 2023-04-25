@@ -10,9 +10,8 @@ const Animationspace = ({ outPutObj }) => {
   const exampleCanvaRef = useRef(null);
 
   //variables
-  let mode = ["straight", "left", "back", "right"];
+  let mode = ["straight", "up", "back", "down"];
   let objVar = { x: 100, y: 100, dx: 50, dy: 50 };
-
   let color = "blue";
 
   let m = 0;
@@ -26,10 +25,10 @@ const Animationspace = ({ outPutObj }) => {
         case "straight":
           objVar.x += objVar.dx;
           break;
-        case "left":
+        case "up":
           objVar.y -= objVar.dy;
           break;
-        case "right":
+        case "down":
           objVar.y += objVar.dy;
           break;
         case "back":
