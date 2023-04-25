@@ -71,7 +71,7 @@ const Animationspace = ({ outPutObj }) => {
       const index = outPutObj.length - 1;
       if (index >= 0) {
         BallMovement(ctx, objVar.x, objVar.y, color, 20);
-        DropBox(ctx, objVar.x, objVar.y, "blue");
+        //DropBox(ctx, objVar.x, objVar.y, "blue");
       } else {
         BallMovement(ctx, objVar.x, objVar.y, "blue", 20);
       }
